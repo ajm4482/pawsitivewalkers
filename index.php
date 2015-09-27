@@ -10,7 +10,7 @@
         $connectionOptions = array("Database"=>"Pawsitive",
             "Uid"=>"andymedina11@pawsitivedogs.database.windows.net", "PWD"=>"HackTX1!");
         $conn = sqlsrv_connect($serverName, $connectionOptions);
-        echo "2";
+        echo "6";
         if($conn == false)
         {
             echo "No connection";
@@ -27,7 +27,7 @@ function WriteData()
 {
     try
     {
-        echo "3";
+        echo "6";
         $conn = OpenConnection();
         $tsql = "INSERT INTO SalesLT.Customers (Name) VALUES(Rosco Jenkins,Dank,Danky)";
         if (!sqlsrv_query($conn, $tsql))
