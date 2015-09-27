@@ -31,6 +31,10 @@ function WriteData()
         $conn = OpenConnection();
         $sql = "INSERT INTO dbo.Dog (ID,Name,Count,Time1,Time2,Time3,Time4,Time5,Time6,TimeDiff,Notes,Kennel,Image) VALUES (Rosco Jenkins,10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)";
         $stmt= sqlsrv_query( $conn, $sql );
+        if(!$stmt)
+        {
+            echo "Error: Doesn't do Query";
+        }
 
         sqlsrv_close($conn);
     }
