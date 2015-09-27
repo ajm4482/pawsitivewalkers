@@ -12,7 +12,10 @@
         $conn = sqlsrv_connect($serverName, $connectionOptions);
         echo "2";
         if($conn == false)
+        {
+            echo "Saub connection is false"
             die(FormatErrors(sqlsrv_errors()));
+        }
     }
     catch(Exception $e)
     {
