@@ -5,10 +5,12 @@
 {
     try
     {
+        echo "1";
         $serverName = "tcp:pawsitivedogs.database.windows.net,1433";
         $connectionOptions = array("Database"=>"Pawsitive",
             "Uid"=>"andymedina11@pawsitivedogs.database.windows.net", "PWD"=>"HackTX1!");
         $conn = sqlsrv_connect($serverName, $connectionOptions);
+        echo "2";
         if($conn == false)
             die(FormatErrors(sqlsrv_errors()));
     }
