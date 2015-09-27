@@ -29,7 +29,7 @@ function WriteData()
     {
         echo "622";
         $conn = OpenConnection();
-        $sql = "INSERT INTO dbo.Dog VALUES (Rosco Jenkins,10)";
+        $sql = "INSERT dbo.Dog OUTPUT INSERTED.Name VALUES (Rosco Jenkins,10)";
         $stmt= sqlsrv_query( $conn, $sql );
         if(!$stmt)
         {
