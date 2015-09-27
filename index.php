@@ -31,6 +31,7 @@ function WriteData()
         $conn = OpenConnection();
         $sql = "INSERT INTO dbo.Dog (ID,Name,Count,Time1,Time2,Time3,Time4,Time5,Time6,TimeDiff,Notes,Kennel,Image) VALUES (Rosco Jenkins,10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)";
         $stmt= sqlsrv_query( $conn, $sql );
+
 if( $stmt ) {
     if( ($errors = sqlsrv_errors() ) != null) {
         foreach( $errors as $error ) {
@@ -38,7 +39,7 @@ if( $stmt ) {
             echo "code: ".$error[ 'code']."<br />";
             echo "message: ".$error[ 'message']."<br />";
         }
-    }
+    }}
         if (!sqlsrv_query($conn, $tsql))
         {
             echo "dieee";
