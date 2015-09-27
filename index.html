@@ -1,69 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+<html lang = "en-US">
+ <head>
+ <meta charset = "UTF-8">
+ <title>contact.php</title>
+ <style type = "text/css">
+  table, th, td {border: 1px solid black};
+ </style>
+ </head>
+ <body>
+ <p>
 
-    <title>Started on this</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../../css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="starter-template.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-      <table>
-          <tr>
-              <th></th>
-              <th>9am</th>
-              <th>10am</th>
-              <th>11am</th>
-              <th>12am</th>
-          </tr>
-          <tr>
-              <th>Doge</th>
-              <td colspan="2">Geography</td>
-              <td>Math</td>
-              <td>Art</td>
-          </tr>
-          <tr>
-              <th>SugarBear</th>
-              <td colspan="3"> Gym</td>
-              <td>Home Ec</td>
-          </tr>
-        </table>
-        <table>
-        <tr class="odd">
-<td  ><a name="28554061"></a><a href="http://www.austinpetsalive.org/adopt/available-dog-details/?ID=28554061"><img src="http://www.petango.com/sms/photos/1112/6eb63a0a-3fdc-48ab-9f5f-a410831e1f76_TN1.jpg"></a></td> <td class="wideview">28554061</td><td class="wideview"><a href="http://www.dogdiaries.dreamhosters.com/?page_id=100&dog_id=28554061">1 training plans</a></td>
-<td>Zorra</td><td class="wideview">F</td><td class="wideview">Y</td><td class="wideview">Terrier, Pit Bull</td><td class="wideview">5 years, 3 months </td><td><a href="http://www.dogdiaries.dreamhosters.com/?page_id=32&dog_id=28554061">1  big(s)</a><br></td><td><a href="http://www.dogdiaries.dreamhosters.com/?page_id=55&dog_id=28554061">7 diary entries</a></td><td>N</td><td class="wideview">2015-07-09 <h3>Long stay!</h3>(79 days)</td><td class="wideview">N</td><td bgcolor="Silver" align="center" valign="center"><a href="javascript: window.open('http://www.dogdiaries.dreamhosters.com/?page_id=80&dog_id=28554061', 'window_name', 'width = 350, height = 600');window.reload(true);" class="headr"><b><font color="white" align="center" > Silver <br>Level 2 Training and<br>Kennel Routine Required <br>I really want to meet you!</b> </font></a></td><td ><a href="javascript: window.open('http://www.dogdiaries.dreamhosters.com/?page_id=124&dog_id=28554061', 'window_name', 'width = 350, height = 600');window.reload(true);" class="headr"><b>Treat Street(A1) : 154</tr>
-</table>
-    
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+ <?php
+  try {
+  $con = new PDO ( sqlsrv:server = tcp:pawsitivedogs.database.windows.net,1433; Database = PawsitiveDogs, andymedina11, HackTX!);
+  $con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+  $query = "SELECT * FROM contact";
+ 
+  //first pass just gets the column names
+  print "<table> \n";
+  $result = $con->query($query);
+  //return only the first row (we only need field names)
+  $row = $result->fetch(PDO::FETCH_ASSOC);
+  print " <tr> \n";
+  foreach ($row as $field => $value){
+   print " <th>$field</th> \n";
+  } // end foreach
+  print " </tr> \n";
+  //second query gets the data
+  $data = $con->query($query);
+  $data->setFetchMode(PDO::FETCH_ASSOC);
+  foreach($data as $row){
+   print " <tr> \n";
+   foreach ($row as $name=>$value){
+   print " <td>$value</td> \n";
+   } // end field loop
+   print " </tr> \n";
+  } // end record loop
+  print "</table> \n";
+  } catch(PDOException $e) {
+   echo 'ERROR: ' . $e->getMessage();
+  } // end try
+ ?>
+ </p>
+ </body>
 </html>
