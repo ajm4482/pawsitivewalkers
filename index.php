@@ -7,7 +7,7 @@
     {
         echo "1";
         $serverName = "tcp:pawsitivedogs.database.windows.net,1433";
-        $connectionOptions = array("Database"=>"Pawsitive",
+        $connectionOptions = array("Database"=>"PawsitiveDogs",
             "Uid"=>"andymedina11@pawsitivedogs.database.windows.net", "PWD"=>"HackTX1!");
         $conn = sqlsrv_connect($serverName, $connectionOptions);
         echo "2";
@@ -22,29 +22,18 @@
         echo("Error!");
     }
 }
-function ReadData()
+function WriteData()
 {
     try
     {
         echo "3";
         $conn = OpenConnection();
-        $tsql = "SELECT [CompanyName] FROM SalesLT.Customer";
-        $getProducts = sqlsrv_query($conn, $tsql);
-        if ($getProducts == FALSE)
+        $tsql = "INSERT INTO dbo.dogs (Name) VALUES(Rosco Jenkins,Dank,Danky)";
+        if (!sqlsrv_query($conn, $tsql))
         {
             echo "dieee";
             die(FormatErrors(sqlsrv_errors()));
         }
-        $productCount = 0;
-        echo "4";
-        while($row = sqlsrv_fetch_array($getProducts, SQLSRV_FETCH_ASSOC))
-        {
-            echo($row['CompanyName']);
-            echo("<br/>");
-            $productCount++;
-        }
-        echo "5";
-        sqlsrv_free_stmt($getProducts);
         sqlsrv_close($conn);
     }
     catch(Exception $e)
@@ -53,7 +42,7 @@ function ReadData()
     }
 }
 echo "6";
-ReadData();
+WriteData();
 echo "7";
 ?>
  </body>
