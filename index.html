@@ -12,7 +12,7 @@
 
  <?php
   try {
-  $con = new PDO ( sqlsrv:server = tcp:pawsitivedogs.database.windows.net,1433; Database = PawsitiveDogs, 'andymedina11', 'HackTX!');
+  $con = new PDO ( sqlsrv:server = tcp:pawsitive.database.windows.net,1433; Database = Pawsitive, 'andymedina11', 'HackTX!');
   $con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
   $query = "SELECT * FROM Name";
  
