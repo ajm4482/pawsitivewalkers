@@ -28,7 +28,10 @@ function ReadData()
         $tsql = "SELECT [CompanyName] FROM SalesLT.Customer";
         $getProducts = sqlsrv_query($conn, $tsql);
         if ($getProducts == FALSE)
+        {
+            echo "dieee";
             die(FormatErrors(sqlsrv_errors()));
+        }
         $productCount = 0;
         echo "4";
         while($row = sqlsrv_fetch_array($getProducts, SQLSRV_FETCH_ASSOC))
