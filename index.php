@@ -13,9 +13,9 @@
         echo "2";
         if($conn == false)
         {
-            echo "Saub connection is false";
             die(FormatErrors(sqlsrv_errors()));
         }
+        return $conn;
     }
     catch(Exception $e)
     {
