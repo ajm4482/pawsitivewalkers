@@ -29,7 +29,7 @@ function WriteData()
     {
         echo "6";
         $conn = OpenConnection();
-        $tsql = "INSERT INTO SalesLT.Customers (FirstName,LastName) VALUES (Rosco Jenkins,Dank)";
+        $tsql = "INSERT INTO SalesLT.Customers (CustomerID, NameStyle, Title, FirstName, MiddleName, LastName, Suffix, CompanyName, SalesPerson, EmailAddress, Phone,PasswordHash,PasswordSalt,rowguid,ModifiedDate) VALUES (Rosco Jenkins,S,SOU,NULL,BikeDude,adventure-workspamela,some@email,10294-19293-1,lqocjpqoiqj398qEEQa,13iakwl,aj020maij,2005-08-01 00:00)";
         if (!sqlsrv_query($conn, $tsql))
         {
             echo "dieee";
