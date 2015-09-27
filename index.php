@@ -7,12 +7,13 @@
     {
         echo "1";
         $serverName = "tcp:pawsitivedogs.database.windows.net,1433";
-        $connectionOptions = array("Database"=>"PawsitiveDogs",
+        $connectionOptions = array("Database"=>"Pawsitive",
             "Uid"=>"andymedina11@pawsitivedogs.database.windows.net", "PWD"=>"HackTX1!");
         $conn = sqlsrv_connect($serverName, $connectionOptions);
         echo "2";
         if($conn == false)
         {
+            echo "No connection";
             die(FormatErrors(sqlsrv_errors()));
         }
         return $conn;
@@ -28,7 +29,7 @@ function WriteData()
     {
         echo "3";
         $conn = OpenConnection();
-        $tsql = "INSERT INTO dbo.dogs (Name) VALUES(Rosco Jenkins,Dank,Danky)";
+        $tsql = "INSERT INTO SalesLT.Customers (Name) VALUES(Rosco Jenkins,Dank,Danky)";
         if (!sqlsrv_query($conn, $tsql))
         {
             echo "dieee";
