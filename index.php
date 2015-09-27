@@ -13,7 +13,7 @@
         echo "2";
         if($conn == false)
         {
-            echo "Saub connection is false"
+            echo "Saub connection is false";
             die(FormatErrors(sqlsrv_errors()));
         }
     }
