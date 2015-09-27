@@ -33,7 +33,7 @@ function WriteData()
         $stmt= sqlsrv_query( $conn, $sql );
         if(!$stmt)
         {
-            echo "Error: Doesn't do Query";
+            echo "Error: Doesn't Query";
         }
 
         sqlsrv_close($conn);
